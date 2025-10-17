@@ -82,7 +82,7 @@ class HeadlessH5PServiceProvider extends ServiceProvider
     public function bootForConsole(): void
     {
         $this->publishes([
-            __DIR__ . '/config/hh5p.php' => config_path(ConfigEnum::CONFIG_KEY . '.php'),
+            __DIR__ . '/../config/hh5p.php' => config_path(ConfigEnum::CONFIG_KEY . '.php'),
         ], ConfigEnum::CONFIG_KEY . '.config');
     }
 }
