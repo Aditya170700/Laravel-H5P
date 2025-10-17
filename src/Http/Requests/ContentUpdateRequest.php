@@ -1,8 +1,8 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Http\Requests;
+namespace Adityaricki\LaravelH5P\Http\Requests;
 
-use Brnysn\LaravelH5P\Models\H5PContent;
+use Adityaricki\LaravelH5P\Models\H5PContent;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
@@ -10,8 +10,8 @@ class ContentUpdateRequest extends FormRequest
 {
     public function authorize(): bool
     {
-//        $h5pContent = H5PContent::findOrFail($this->route('id'));
-//        return Gate::allows('update', $h5pContent);
+        //        $h5pContent = H5PContent::findOrFail($this->route('id'));
+        //        return Gate::allows('update', $h5pContent);
 
         H5PContent::findOrFail($this->route('id'));
         return true;

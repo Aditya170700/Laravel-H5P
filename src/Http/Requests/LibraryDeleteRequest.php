@@ -1,8 +1,8 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Http\Requests;
+namespace Adityaricki\LaravelH5P\Http\Requests;
 
-use Brnysn\LaravelH5P\Repositories\Contracts\H5PContentRepositoryContract;
+use Adityaricki\LaravelH5P\Repositories\Contracts\H5PContentRepositoryContract;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
@@ -15,10 +15,10 @@ class LibraryDeleteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-//        $h5PContentRepository = app(H5PContentRepositoryContract::class);
-//        $h5pLibrary = $h5PContentRepository->getLibraryById($this->route('id'));
-//
-//        return Gate::allows('delete', $h5pLibrary);
+        //        $h5PContentRepository = app(H5PContentRepositoryContract::class);
+        //        $h5pLibrary = $h5PContentRepository->getLibraryById($this->route('id'));
+        //
+        //        return Gate::allows('delete', $h5pLibrary);
 
         $h5PContentRepository = app(H5PContentRepositoryContract::class);
         $h5PContentRepository->getLibraryById($this->route('id'));

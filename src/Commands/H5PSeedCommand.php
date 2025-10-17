@@ -1,9 +1,9 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Commands;
+namespace Adityaricki\LaravelH5P\Commands;
 
 use Illuminate\Console\Command;
-use Brnysn\LaravelH5P\Services\Contracts\HeadlessH5PServiceContract;
+use Adityaricki\LaravelH5P\Services\Contracts\HeadlessH5PServiceContract;
 
 class H5PSeedCommand extends Command
 {

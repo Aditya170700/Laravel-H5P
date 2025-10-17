@@ -1,16 +1,16 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Http\Requests;
+namespace Adityaricki\LaravelH5P\Http\Requests;
 
-use Brnysn\LaravelH5P\Models\H5PContent;
+use Adityaricki\LaravelH5P\Models\H5PContent;
 use Illuminate\Support\Facades\Gate;
 
 class AdminContentReadRequest extends ContentReadRequest
 {
     public function authorize(): bool
     {
-//        $h5pContent = $this->getH5PContent();
-//        return Gate::allows('read', $h5pContent);
+        //        $h5pContent = $this->getH5PContent();
+        //        return Gate::allows('read', $h5pContent);
 
         $this->getH5PContent();
         return true;

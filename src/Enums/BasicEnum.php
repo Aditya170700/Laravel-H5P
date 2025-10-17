@@ -1,6 +1,6 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Enums;
+namespace Adityaricki\LaravelH5P\Enums;
 
 use BenSampo\Enum\Enum;
 use Illuminate\Support\Collection;
@@ -20,7 +20,7 @@ abstract class BasicEnum extends Enum
         } else {
             $array = parent::asArray();
             $array = array_flip($array);
-            return array_map(fn ($val) => str_replace('_', ' ', $val), $array);
+            return array_map(fn($val) => str_replace('_', ' ', $val), $array);
         }
     }
 
@@ -98,7 +98,7 @@ abstract class BasicEnum extends Enum
      * @return mixed
      * @throws \ReflectionException
      */
-    public static function getValue(string $name) :?string
+    public static function getValue(string $name): ?string
     {
         if (self::isValidName($name)) {
             return parent::getValue(Str::upper($name));

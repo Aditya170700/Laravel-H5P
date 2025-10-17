@@ -1,9 +1,9 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Http\Requests;
+namespace Adityaricki\LaravelH5P\Http\Requests;
 
-use Brnysn\LaravelH5P\Models\H5PLibrary;
-use Brnysn\LaravelH5P\Repositories\Contracts\H5PContentRepositoryContract;
+use Adityaricki\LaravelH5P\Models\H5PLibrary;
+use Adityaricki\LaravelH5P\Repositories\Contracts\H5PContentRepositoryContract;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,14 +16,14 @@ class LibraryStoreRequest extends FormRequest
      */
     public function authorize()
     {
-//        if ($this->route('id')) {
-//            $h5PContentRepository = app(H5PContentRepositoryContract::class);
-//            $h5pLibrary = $h5PContentRepository->getLibraryById($this->route('id'));
-//
-//            return Gate::allows('update', $h5pLibrary);
-//        }
-//
-//        return Gate::allows('update', H5PLibrary::class);
+        //        if ($this->route('id')) {
+        //            $h5PContentRepository = app(H5PContentRepositoryContract::class);
+        //            $h5pLibrary = $h5PContentRepository->getLibraryById($this->route('id'));
+        //
+        //            return Gate::allows('update', $h5pLibrary);
+        //        }
+        //
+        //        return Gate::allows('update', H5PLibrary::class);
 
         if ($this->route('id')) {
             $h5PContentRepository = app(H5PContentRepositoryContract::class);

@@ -2,6 +2,11 @@
 
 Forked from [https://github.com/EscolaLMS](https://github.com/EscolaLMS/h5p)
 
+## Requirements
+
+- PHP 8.1, 8.2, 8.3, or 8.4
+- Laravel 10.x, 11.x, or 12.x (latest)
+
 ## Description
 
 This package provides a Laravel API for interacting with H5P content without installing **_unrelated_** dependencies.
@@ -17,8 +22,8 @@ Main repository requires 8 unrelated packages - most of them are escolalms depen
 - spatie/permission
 - laravel/socialite
 
-
 # Original Documentation
+
 ## Features
 
 The lib allows headlessly
@@ -38,9 +43,9 @@ To play the content you can use [EscolaLMS H5P Player](https://github.com/Escola
 
 ## Install
 
-1. `composer require brnysn/headless-h5p`
+1. `composer require adityaricki/headless-h5p`
 2. `php artisan migrate`
-3. `php artisan h5p:storage-link` see below 
+3. `php artisan h5p:storage-link` see below
 
 ### Storage links
 
@@ -66,17 +71,17 @@ location ~* \.(eot|ttf|woff|woff2|jpg|jpeg|gif|png|wav|mp3|mp4|mov|ogg|webv)$ {
 }
 ```
 
-### Authorisation 
+### Authorisation
 
-Most of the endpoints require authorisation, this is possible with laravel passport 
+Most of the endpoints require authorisation, this is possible with laravel passport
 
-There is a [seeder](database/seeders/PermissionTableSeeder.php) to must be run in order to authrize 
+There is a [seeder](database/seeders/PermissionTableSeeder.php) to must be run in order to authrize
 
-User model is taken from [Auth](https://github.com/EscolaLMS/Auth) package. 
+User model is taken from [Auth](https://github.com/EscolaLMS/Auth) package.
 
 ### Seeder
 
-To seed content and library 
+To seed content and library
 
 ```
 php artisan db:seed --class="\EscolaLms\HeadlessH5P\Database\Seeders\ContentLibrarySeeder"

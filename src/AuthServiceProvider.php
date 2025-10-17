@@ -1,11 +1,11 @@
 <?php
 
-namespace Brnysn\LaravelH5P;
+namespace Adityaricki\LaravelH5P;
 
-use Brnysn\LaravelH5P\Models\H5PContent;
-use Brnysn\LaravelH5P\Models\H5PLibrary;
-use Brnysn\LaravelH5P\Policies\H5PContentPolicy;
-use Brnysn\LaravelH5P\Policies\H5PLibraryPolicy;
+use Adityaricki\LaravelH5P\Models\H5PContent;
+use Adityaricki\LaravelH5P\Models\H5PLibrary;
+use Adityaricki\LaravelH5P\Policies\H5PContentPolicy;
+use Adityaricki\LaravelH5P\Policies\H5PLibraryPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -15,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
         H5PLibrary::class => H5PLibraryPolicy::class,
     ];
 
-    public function boot()
+    public function boot(): void
     {
         $this->registerPolicies();
     }

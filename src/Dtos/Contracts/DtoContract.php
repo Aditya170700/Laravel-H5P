@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Brnysn\LaravelH5P\Dtos\Contracts;
+namespace Adityaricki\LaravelH5P\Dtos\Contracts;
 
 use Illuminate\Contracts\Support\Arrayable;
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Repositories;
+namespace Adityaricki\LaravelH5P\Repositories;
 
-use Brnysn\LaravelH5P\Exceptions\H5PException;
-use Brnysn\LaravelH5P\Helpers\Helpers;
-use Brnysn\LaravelH5P\Models\H5PContent;
-use Brnysn\LaravelH5P\Models\H5PContentLibrary;
-use Brnysn\LaravelH5P\Models\H5PLibrary;
-use Brnysn\LaravelH5P\Models\H5PLibraryDependency;
-use Brnysn\LaravelH5P\Models\H5PLibraryLanguage;
-use Brnysn\LaravelH5P\Models\H5pLibrariesHubCache;
+use Adityaricki\LaravelH5P\Exceptions\H5PException;
+use Adityaricki\LaravelH5P\Helpers\Helpers;
+use Adityaricki\LaravelH5P\Models\H5PContent;
+use Adityaricki\LaravelH5P\Models\H5PContentLibrary;
+use Adityaricki\LaravelH5P\Models\H5PLibrary;
+use Adityaricki\LaravelH5P\Models\H5PLibraryDependency;
+use Adityaricki\LaravelH5P\Models\H5PLibraryLanguage;
+use Adityaricki\LaravelH5P\Models\H5pLibrariesHubCache;
 use H5PPermission;
 use H5PFrameworkInterface;
 use GuzzleHttp\Client;
@@ -101,9 +101,7 @@ class H5PRepository implements H5PFrameworkInterface
      * @param string $machineName
      * @param string $tutorialUrl
      */
-    public function setLibraryTutorialUrl($machineName, $tutorialUrl)
-    {
-    }
+    public function setLibraryTutorialUrl($machineName, $tutorialUrl) {}
 
     /**
      * Show the user an error message.
@@ -183,9 +181,9 @@ class H5PRepository implements H5PFrameworkInterface
      */
     public function getLibraryFileUrl($libraryFolderName, $fileName)
     {
-//        $path = 'h5p/libraries/' . $libraryFolderName . '/' . $fileName;
-//        return Storage::disk('local')->exists($path) ? Storage::disk('local')->url($path) : null;
-        return config('app.url').'/storage/h5p/libraries/' . $libraryFolderName . '/' . $fileName;
+        //        $path = 'h5p/libraries/' . $libraryFolderName . '/' . $fileName;
+        //        return Storage::disk('local')->exists($path) ? Storage::disk('local')->url($path) : null;
+        return config('app.url') . '/storage/h5p/libraries/' . $libraryFolderName . '/' . $fileName;
     }
 
     /**
@@ -232,15 +230,19 @@ class H5PRepository implements H5PFrameworkInterface
         return H5PLibrary::query()
             ->select(['l1.id', 'l1.name', 'l1.major_version', 'l1.minor_version', 'l1.patch_version', 'l1.preloaded_js', 'l1.preloaded_css', 'l1.add_to'])
             ->from('hh5p_libraries as l1')
-            ->leftJoin('hh5p_libraries as l2', fn($join) => $join
-                ->on('l1.name', '=', 'l2.name')
-                ->on(fn($query) => $query
-                    ->on('l1.major_version', '<', 'l2.major_version')
-                    ->orOn(fn ($query) => $query
-                        ->orOn('l1.major_version', '=', 'l2.major_version')
-                        ->on('l1.minor_version', '<', 'l2.minor_version')
+            ->leftJoin(
+                'hh5p_libraries as l2',
+                fn($join) => $join
+                    ->on('l1.name', '=', 'l2.name')
+                    ->on(
+                        fn($query) => $query
+                            ->on('l1.major_version', '<', 'l2.major_version')
+                            ->orOn(
+                                fn($query) => $query
+                                    ->orOn('l1.major_version', '=', 'l2.major_version')
+                                    ->on('l1.minor_version', '<', 'l2.minor_version')
+                            )
                     )
-                )
             )
             ->whereNotNull('l1.add_to')
             ->whereNull('l2.name')
@@ -255,9 +257,7 @@ class H5PRepository implements H5PFrameworkInterface
      *
      * @return array
      */
-    public function getLibraryConfig($libraries = null)
-    {
-    }
+    public function getLibraryConfig($libraries = null) {}
 
     /**
      * Get a list of the current installed libraries.
@@ -297,9 +297,7 @@ class H5PRepository implements H5PFrameworkInterface
      * @return string
      *                URL to admin page
      */
-    public function getAdminUrl()
-    {
-    }
+    public function getAdminUrl() {}
 
     /**
      * Get id to an existing library.
@@ -589,7 +587,7 @@ class H5PRepository implements H5PFrameworkInterface
         ];
 
         $content['parameters'] = json_encode($parameters);
-//        $content['filtered'] = json_encode($parameters['params']);
+        //        $content['filtered'] = json_encode($parameters['params']);
 
         return $content;
     }
@@ -627,9 +625,7 @@ class H5PRepository implements H5PFrameworkInterface
      *
      * @param int $contentId
      */
-    public function resetContentUserData($contentId)
-    {
-    }
+    public function resetContentUserData($contentId) {}
 
     /**
      * Save what libraries a library is depending on.
@@ -678,10 +674,7 @@ class H5PRepository implements H5PFrameworkInterface
      *                           That supports versions. (In this case the content id will typically be
      *                           the version id, and the contentMainId will be the frameworks content id
      */
-    public function copyLibraryUsage($contentId, $copyFromId, $contentMainId = null)
-    {
-
-    }
+    public function copyLibraryUsage($contentId, $copyFromId, $contentMainId = null) {}
 
     /**
      * Deletes content data.
@@ -689,9 +682,7 @@ class H5PRepository implements H5PFrameworkInterface
      * @param int $contentId
      *                       Id identifying the content
      */
-    public function deleteContentData($contentId)
-    {
-    }
+    public function deleteContentData($contentId) {}
 
     /**
      * Delete what libraries a content item is using.
@@ -774,20 +765,20 @@ class H5PRepository implements H5PFrameworkInterface
     public function getLibraryUsage($libraryId, $skipContent = false)
     {
         $contentsCount = $skipContent ? -1 : H5PLibrary::query()
-                                                       ->join('hh5p_contents_libraries', 'hh5p_libraries.id', '=', 'hh5p_contents_libraries.library_id')
-                                                       ->join('hh5p_contents', 'hh5p_contents_libraries.content_id', '=', 'hh5p_contents.id')
-                                                       ->where('hh5p_libraries.id', '=', $libraryId)
-                                                       ->distinct()
-                                                       ->count('hh5p_contents.id');
+            ->join('hh5p_contents_libraries', 'hh5p_libraries.id', '=', 'hh5p_contents_libraries.library_id')
+            ->join('hh5p_contents', 'hh5p_contents_libraries.content_id', '=', 'hh5p_contents.id')
+            ->where('hh5p_libraries.id', '=', $libraryId)
+            ->distinct()
+            ->count('hh5p_contents.id');
 
         $librariesCount = H5PLibrary::query()
-                                    ->with('dependencies')
-                                    ->whereHas('dependencies', fn($query) => $query->whereRequiredLibraryId($libraryId))
-                                    ->count();
+            ->with('dependencies')
+            ->whereHas('dependencies', fn($query) => $query->whereRequiredLibraryId($libraryId))
+            ->count();
 
         return [
-          'content' => $contentsCount,
-          'libraries' => $librariesCount,
+            'content' => $contentsCount,
+            'libraries' => $librariesCount,
         ];
     }
 
@@ -895,9 +886,7 @@ class H5PRepository implements H5PFrameworkInterface
      * @param int    $minorVersion
      *                             The library's minor version
      */
-    public function alterLibrarySemantics(&$semantics, $machineName, $majorVersion, $minorVersion)
-    {
-    }
+    public function alterLibrarySemantics(&$semantics, $machineName, $majorVersion, $minorVersion) {}
 
     /**
      * Delete all dependencies belonging to given library.
@@ -913,16 +902,12 @@ class H5PRepository implements H5PFrameworkInterface
     /**
      * Start an atomic operation against the dependency storage.
      */
-    public function lockDependencyStorage()
-    {
-    }
+    public function lockDependencyStorage() {}
 
     /**
      * Stops an atomic operation against the dependency storage.
      */
-    public function unlockDependencyStorage()
-    {
-    }
+    public function unlockDependencyStorage() {}
 
     /**
      * Delete a library from database and file system.
@@ -1104,7 +1089,7 @@ class H5PRepository implements H5PFrameworkInterface
      */
     public function clearFilteredParameters($library_ids)
     {
-         H5PContent::query()->whereIn('library_id', $library_ids)->update(['filtered' => null]);
+        H5PContent::query()->whereIn('library_id', $library_ids)->update(['filtered' => null]);
     }
 
     /**
@@ -1113,9 +1098,7 @@ class H5PRepository implements H5PFrameworkInterface
      *
      * @return int
      */
-    public function getNumNotFiltered()
-    {
-    }
+    public function getNumNotFiltered() {}
 
     /**
      * Get number of contents using library as main library.
@@ -1125,9 +1108,7 @@ class H5PRepository implements H5PFrameworkInterface
      *
      * @return int
      */
-    public function getNumContent($libraryId, $skip = null)
-    {
-    }
+    public function getNumContent($libraryId, $skip = null) {}
 
     /**
      * Determines if content slug is used.
@@ -1173,9 +1154,7 @@ class H5PRepository implements H5PFrameworkInterface
      * @param array  $libraries
      *                          List of dependencies(libraries) used to create the key
      */
-    public function saveCachedAssets($key, $libraries)
-    {
-    }
+    public function saveCachedAssets($key, $libraries) {}
 
     /**
      * Locate hash keys for given library and delete them.
@@ -1199,13 +1178,13 @@ class H5PRepository implements H5PFrameworkInterface
     public function getLibraryContentCount()
     {
         return H5PLibrary::query()
-                         ->select('name', 'major_version', 'minor_version')
-                         ->with('contents')
-                         ->has('contents')
-                         ->withCount('contents as count')
-                         ->get()
-                         ->mapWithKeys(fn($item, $key) => [$item->uberName => $item->count])
-                         ->toArray();
+            ->select('name', 'major_version', 'minor_version')
+            ->with('contents')
+            ->has('contents')
+            ->withCount('contents as count')
+            ->get()
+            ->mapWithKeys(fn($item, $key) => [$item->uberName => $item->count])
+            ->toArray();
     }
 
     /**
@@ -1270,7 +1249,7 @@ class H5PRepository implements H5PFrameworkInterface
     public function replaceContentTypeCache($contentTypeCache)
     {
         foreach ($contentTypeCache->contentTypes as $ct) {
-           $data[] = [
+            $data[] = [
                 'machine_name' => $ct->id,
                 'major_version' => $ct->version->major,
                 'minor_version' => $ct->version->minor,
@@ -1295,7 +1274,7 @@ class H5PRepository implements H5PFrameworkInterface
             ];
         }
 
-        DB::transaction(function () use($data) {
+        DB::transaction(function () use ($data) {
             H5pLibrariesHubCache::query()->delete();
             H5pLibrariesHubCache::insert($data);
         });
@@ -1308,9 +1287,7 @@ class H5PRepository implements H5PFrameworkInterface
      *
      * @return bool
      */
-    public function libraryHasUpgrade($library)
-    {
-    }
+    public function libraryHasUpgrade($library) {}
 
     /**
      * Replace content hub metadata cache.
@@ -1320,9 +1297,7 @@ class H5PRepository implements H5PFrameworkInterface
      *
      * @return mixed
      */
-    public function replaceContentHubMetadataCache($metadata, $lang)
-    {
-    }
+    public function replaceContentHubMetadataCache($metadata, $lang) {}
 
     /**
      * Get content hub metadata cache from db.
@@ -1331,9 +1306,7 @@ class H5PRepository implements H5PFrameworkInterface
      *
      * @return JsonSerializable Json string
      */
-    public function getContentHubMetadataCache($lang = 'en')
-    {
-    }
+    public function getContentHubMetadataCache($lang = 'en') {}
 
     /**
      * Get time of last content hub metadata check.
@@ -1342,9 +1315,7 @@ class H5PRepository implements H5PFrameworkInterface
      *
      * @return string|null Time in RFC7231 format
      */
-    public function getContentHubMetadataChecked($lang = 'en')
-    {
-    }
+    public function getContentHubMetadataChecked($lang = 'en') {}
 
     /**
      * Set time of last content hub metadata check.
@@ -1354,7 +1325,5 @@ class H5PRepository implements H5PFrameworkInterface
      *
      * @return bool True if successful
      */
-    public function setContentHubMetadataChecked($time, $lang = 'en')
-    {
-    }
+    public function setContentHubMetadataChecked($time, $lang = 'en') {}
 }

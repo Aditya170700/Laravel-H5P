@@ -1,8 +1,8 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Models;
+namespace Adityaricki\LaravelH5P\Models;
 
-use Brnysn\LaravelH5P\Database\Factories\H5PLibraryFactory;
+use Adityaricki\LaravelH5P\Database\Factories\H5PLibraryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -211,27 +211,27 @@ class H5PLibrary extends Model
         return $this->getKey();
     }
 
-    public function getMachineNameAttribute():string
+    public function getMachineNameAttribute(): string
     {
         return $this->getAttributeValue('name');
     }
 
     public function getVersionAttribute(): string
     {
-        return $this->major_version. '.' . $this->minor_version . '.' . $this->patch_version;
+        return $this->major_version . '.' . $this->minor_version . '.' . $this->patch_version;
     }
 
-    public function getUberNameAttribute():string
+    public function getUberNameAttribute(): string
     {
-        return $this->getAttributeValue('name')." ".$this->getAttributeValue('major_version').".".$this->getAttributeValue('minor_version');
+        return $this->getAttributeValue('name') . " " . $this->getAttributeValue('major_version') . "." . $this->getAttributeValue('minor_version');
     }
 
-    public function getMajorVersionAttribute():int
+    public function getMajorVersionAttribute(): int
     {
         return isset($this->attributes['major_version']) ? $this->attributes['major_version'] : 0;
     }
 
-    public function getMinorVersionAttribute():int
+    public function getMinorVersionAttribute(): int
     {
         return isset($this->attributes['minor_version']) ? $this->attributes['minor_version'] : '';
     }
@@ -241,32 +241,32 @@ class H5PLibrary extends Model
         return isset($this->attributes['patch_version']) ? $this->attributes['patch_version'] : '';
     }
 
-    public function getPreloadedJsAttribute():string
+    public function getPreloadedJsAttribute(): string
     {
         return isset($this->attributes['preloaded_js']) ? $this->attributes['preloaded_js'] : '';
     }
 
-    public function getPreloadedCssAttribute():string
+    public function getPreloadedCssAttribute(): string
     {
         return isset($this->attributes['preloaded_css']) ? $this->attributes['preloaded_css'] : '';
     }
 
-    public function getAddToAttribute():string
+    public function getAddToAttribute(): string
     {
         return isset($this->attributes['add_to']) ? $this->attributes['add_to'] : '';
     }
 
-    public function getDropLibraryCssAttribute():string
+    public function getDropLibraryCssAttribute(): string
     {
         return isset($this->attributes['drop_library_css']) ? $this->attributes['drop_library_css'] : '';
     }
 
-    public function getTutorialUrlAttribute():string
+    public function getTutorialUrlAttribute(): string
     {
         return isset($this->attributes['tutorial_url']) ? $this->attributes['tutorial_url'] : '';
     }
 
-    public function getHasIconAttribute():string
+    public function getHasIconAttribute(): string
     {
         return isset($this->attributes['has_icon']) ? $this->attributes['has_icon'] : '';
     }

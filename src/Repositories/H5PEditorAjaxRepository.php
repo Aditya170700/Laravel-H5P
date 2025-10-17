@@ -1,13 +1,13 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Repositories;
+namespace Adityaricki\LaravelH5P\Repositories;
 
-use Brnysn\LaravelH5P\Models\H5PContent;
+use Adityaricki\LaravelH5P\Models\H5PContent;
 use Exception;
 use H5PEditorAjaxInterface;
-use Brnysn\LaravelH5P\Models\H5pLibrariesHubCache;
-use Brnysn\LaravelH5P\Helpers\Helpers;
-use Brnysn\LaravelH5P\Models\H5PLibrary;
+use Adityaricki\LaravelH5P\Models\H5pLibrariesHubCache;
+use Adityaricki\LaravelH5P\Helpers\Helpers;
+use Adityaricki\LaravelH5P\Models\H5PLibrary;
 use Illuminate\Support\Facades\Log;
 use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\Signer\Key;
@@ -43,9 +43,10 @@ class H5PEditorAjaxRepository implements H5PEditorAjaxInterface
         $result = $all
             ->groupBy('name')
             ->filter(fn($item) => $item->count() > 1)
-            ->map(fn($item) => $item
-                ->sortBy('version', SORT_NATURAL)
-                ->last()
+            ->map(
+                fn($item) => $item
+                    ->sortBy('version', SORT_NATURAL)
+                    ->last()
             );
 
 

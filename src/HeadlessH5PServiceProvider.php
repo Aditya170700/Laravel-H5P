@@ -1,18 +1,18 @@
 <?php
 
-namespace Brnysn\LaravelH5P;
+namespace Adityaricki\LaravelH5P;
 
-use Brnysn\LaravelH5P\Commands\H5PSeedCommand;
-use Brnysn\LaravelH5P\Commands\StorageH5PLinkCommand;
-use Brnysn\LaravelH5P\Enums\ConfigEnum;
-use Brnysn\LaravelH5P\Repositories\Contracts\H5PContentRepositoryContract;
-use Brnysn\LaravelH5P\Repositories\H5PContentRepository;
-use Brnysn\LaravelH5P\Repositories\H5PEditorAjaxRepository;
-use Brnysn\LaravelH5P\Repositories\H5PEditorStorageRepository;
-use Brnysn\LaravelH5P\Repositories\H5PFileStorageRepository;
-use Brnysn\LaravelH5P\Repositories\H5PRepository;
-use Brnysn\LaravelH5P\Services\Contracts\HeadlessH5PServiceContract;
-use Brnysn\LaravelH5P\Services\HeadlessH5PService;
+use Adityaricki\LaravelH5P\Commands\H5PSeedCommand;
+use Adityaricki\LaravelH5P\Commands\StorageH5PLinkCommand;
+use Adityaricki\LaravelH5P\Enums\ConfigEnum;
+use Adityaricki\LaravelH5P\Repositories\Contracts\H5PContentRepositoryContract;
+use Adityaricki\LaravelH5P\Repositories\H5PContentRepository;
+use Adityaricki\LaravelH5P\Repositories\H5PEditorAjaxRepository;
+use Adityaricki\LaravelH5P\Repositories\H5PEditorStorageRepository;
+use Adityaricki\LaravelH5P\Repositories\H5PFileStorageRepository;
+use Adityaricki\LaravelH5P\Repositories\H5PRepository;
+use Adityaricki\LaravelH5P\Services\Contracts\HeadlessH5PServiceContract;
+use Adityaricki\LaravelH5P\Services\HeadlessH5PService;
 use H5PContentValidator;
 use H5PCore;
 use H5peditor;
@@ -67,19 +67,19 @@ class HeadlessH5PServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes.php');
         //$this->loadFactoriesFrom(__DIR__ . '/../database/factories');
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'h5p');
-        $this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang');
-        $this->mergeConfigFrom(__DIR__.'/../config/hh5p.php', 'hh5p');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'h5p');
+        $this->loadJsonTranslationsFrom(__DIR__ . '/../resources/lang');
+        $this->mergeConfigFrom(__DIR__ . '/../config/hh5p.php', 'hh5p');
         // Load configs
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
     }
 
-    public function bootForConsole()
+    public function bootForConsole(): void
     {
         $this->publishes([
             __DIR__ . '/config/hh5p.php' => config_path(ConfigEnum::CONFIG_KEY . '.php'),

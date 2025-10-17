@@ -8,10 +8,8 @@ class CreateHH5pContentsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('hh5p_contents', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -23,7 +21,7 @@ class CreateHH5pContentsTable extends Migration
             $table->foreign('library_id')->references('id')->on('hh5p_libraries')->onDelete('cascade');
             $table->mediumText('parameters'); // TODO this can be JSON type
             $table->string('nonce', 8)->unique(); // used for assiging temporary editor files to content
-            
+
 
             // TODO: do we need those ?
             $table->text('filtered')->nullable();
@@ -40,11 +38,9 @@ class CreateHH5pContentsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::drop('hh5p_contents');
+        Schema::dropIfExists('hh5p_contents');
     }
 }

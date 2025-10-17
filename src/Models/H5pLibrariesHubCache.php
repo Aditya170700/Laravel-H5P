@@ -1,6 +1,6 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Models;
+namespace Adityaricki\LaravelH5P\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

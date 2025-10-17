@@ -1,20 +1,20 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Http\Controllers;
+namespace Adityaricki\LaravelH5P\Http\Controllers;
 
-use Brnysn\LaravelH5P\Dtos\ContentFilterCriteriaDto;
-use Brnysn\LaravelH5P\Http\Controllers\Swagger\ContentApiSwagger;
-use Brnysn\LaravelH5P\Http\Requests\ContentCreateRequest;
-use Brnysn\LaravelH5P\Http\Requests\ContentDeleteRequest;
-use Brnysn\LaravelH5P\Http\Requests\ContentListRequest;
-use Brnysn\LaravelH5P\Http\Requests\AdminContentReadRequest;
-use Brnysn\LaravelH5P\Http\Requests\ContentReadRequest;
-use Brnysn\LaravelH5P\Http\Requests\ContentUpdateRequest;
-use Brnysn\LaravelH5P\Http\Requests\LibraryStoreRequest;
-use Brnysn\LaravelH5P\Http\Resources\ContentIndexResource;
-use Brnysn\LaravelH5P\Http\Resources\ContentResource;
-use Brnysn\LaravelH5P\Repositories\Contracts\H5PContentRepositoryContract;
-use Brnysn\LaravelH5P\Services\Contracts\HeadlessH5PServiceContract;
+use Adityaricki\LaravelH5P\Dtos\ContentFilterCriteriaDto;
+use Adityaricki\LaravelH5P\Http\Controllers\Swagger\ContentApiSwagger;
+use Adityaricki\LaravelH5P\Http\Requests\ContentCreateRequest;
+use Adityaricki\LaravelH5P\Http\Requests\ContentDeleteRequest;
+use Adityaricki\LaravelH5P\Http\Requests\ContentListRequest;
+use Adityaricki\LaravelH5P\Http\Requests\AdminContentReadRequest;
+use Adityaricki\LaravelH5P\Http\Requests\ContentReadRequest;
+use Adityaricki\LaravelH5P\Http\Requests\ContentUpdateRequest;
+use Adityaricki\LaravelH5P\Http\Requests\LibraryStoreRequest;
+use Adityaricki\LaravelH5P\Http\Resources\ContentIndexResource;
+use Adityaricki\LaravelH5P\Http\Resources\ContentResource;
+use Adityaricki\LaravelH5P\Repositories\Contracts\H5PContentRepositoryContract;
+use Adityaricki\LaravelH5P\Services\Contracts\HeadlessH5PServiceContract;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -34,12 +34,12 @@ class ContentApiController extends BaseController implements ContentApiSwagger
     {
         $contentFilterDto = ContentFilterCriteriaDto::instantiateFromRequest($request);
         $columns = [
-          'hh5p_contents.title',
-          'hh5p_contents.id',
-          'hh5p_contents.uuid',
-          'hh5p_contents.library_id',
-          'hh5p_contents.user_id',
-          'hh5p_contents.author'
+            'hh5p_contents.title',
+            'hh5p_contents.id',
+            'hh5p_contents.uuid',
+            'hh5p_contents.library_id',
+            'hh5p_contents.user_id',
+            'hh5p_contents.author'
         ];
         $list = $request->get('per_page') !== null && $request->get('per_page') == 0 ?
             $this->contentRepository->unpaginatedList($contentFilterDto, $columns) :

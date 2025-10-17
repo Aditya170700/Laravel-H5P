@@ -1,6 +1,6 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Helpers;
+namespace Adityaricki\LaravelH5P\Helpers;
 
 use Exception;
 
@@ -106,6 +106,6 @@ class MargeFiles
             return file_get_contents($path);
         }
 
-        throw new Exception("File: '".$path."' do not exist");
+        throw new Exception("File: '" . $path . "' do not exist");
     }
 }

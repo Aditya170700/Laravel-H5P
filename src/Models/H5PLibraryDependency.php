@@ -1,11 +1,11 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Models;
+namespace Adityaricki\LaravelH5P\Models;
 
-use Brnysn\LaravelH5P\Database\Factories\H5PLibraryDependencyFactory;
+use Adityaricki\LaravelH5P\Database\Factories\H5PLibraryDependencyFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-    use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class H5PLibraryDependency extends Model
 {
@@ -31,17 +31,17 @@ class H5PLibraryDependency extends Model
         'dependency_type',
     ];
 
-    public function getDependencyTypeAttribute():string
+    public function getDependencyTypeAttribute(): string
     {
         return $this->attributes['dependency_type'];
     }
 
-    public function library():BelongsTo
+    public function library(): BelongsTo
     {
         return $this->belongsTo(H5PLibrary::class, 'library_id');
     }
 
-    public function requiredLibrary():BelongsTo
+    public function requiredLibrary(): BelongsTo
     {
         return $this->belongsTo(H5PLibrary::class, 'required_library_id');
     }

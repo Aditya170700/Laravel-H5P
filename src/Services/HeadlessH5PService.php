@@ -1,11 +1,11 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Services;
+namespace Adityaricki\LaravelH5P\Services;
 
-use Brnysn\LaravelH5P\Exceptions\H5PException;
-use Brnysn\LaravelH5P\Helpers\MargeFiles;
-use Brnysn\LaravelH5P\Models\H5PLibrary;
-use Brnysn\LaravelH5P\Services\Contracts\HeadlessH5PServiceContract;
+use Adityaricki\LaravelH5P\Exceptions\H5PException;
+use Adityaricki\LaravelH5P\Helpers\MargeFiles;
+use Adityaricki\LaravelH5P\Models\H5PLibrary;
+use Adityaricki\LaravelH5P\Services\Contracts\HeadlessH5PServiceContract;
 use H5PContentValidator;
 use H5PCore;
 use H5peditor;
@@ -46,8 +46,7 @@ class HeadlessH5PService implements HeadlessH5PServiceContract
         H5PEditorAjaxInterface $editorAjaxRepository,
         H5peditor              $editor,
         H5PContentValidator    $contentValidator
-    )
-    {
+    ) {
         $this->repository = $repository;
         $this->fileStorage = $fileStorage;
         $this->core = $core;
@@ -219,7 +218,7 @@ class HeadlessH5PService implements HeadlessH5PServiceContract
         }
         $settings['core']['scripts'][] = $config['get_h5peditor_url'] . '/scripts/h5peditor-editor.js';
         $settings['core']['scripts'][] = $config['get_h5peditor_url'] . '/scripts/h5peditor-init.js';
-        $settings['core']['scripts'][] = $config['get_h5peditor_url'] . '/language/'. $lang .'.js';
+        $settings['core']['scripts'][] = $config['get_h5peditor_url'] . '/language/' . $lang . '.js';
 
         $settings['editor'] = [
             'filesPath' => isset($content) ? url("h5p/content/$content") : url('h5p/editor'),
@@ -495,7 +494,7 @@ class HeadlessH5PService implements HeadlessH5PServiceContract
         $library = H5pLibrary::findOrFail($id);
 
         $libraryUsage = $this->getRepository()->getLibraryUsage($library->getKey());
-        if ($libraryUsage['content'] > 0 ) {
+        if ($libraryUsage['content'] > 0) {
             return false;
         }
 
@@ -616,13 +615,13 @@ class HeadlessH5PService implements HeadlessH5PServiceContract
     public function getContentTypeCache(): array
     {
         // https://github.com/Lumieducation/H5P-Nodejs-library/wiki/Communication-with-the-H5P-Hub
-//        $cacheOutdated = $this->isContentTypeCacheUpdated();
-//
-//        $canUpdateOrInstall = ($this->core->h5pF->hasPermission(H5PPermission::INSTALL_RECOMMENDED) ||
-//            $this->core->h5pF->hasPermission(H5PPermission::UPDATE_LIBRARIES));
+        //        $cacheOutdated = $this->isContentTypeCacheUpdated();
+        //
+        //        $canUpdateOrInstall = ($this->core->h5pF->hasPermission(H5PPermission::INSTALL_RECOMMENDED) ||
+        //            $this->core->h5pF->hasPermission(H5PPermission::UPDATE_LIBRARIES));
 
         return array(
-//            'outdated' => $cacheOutdated && $canUpdateOrInstall,
+            //            'outdated' => $cacheOutdated && $canUpdateOrInstall,
             'outdated' => false,
             'libraries' => $this->editor->getLatestGlobalLibrariesData(),
             'recentlyUsed' => $this->editor->ajaxInterface->getAuthorsRecentlyUsedLibraries(),

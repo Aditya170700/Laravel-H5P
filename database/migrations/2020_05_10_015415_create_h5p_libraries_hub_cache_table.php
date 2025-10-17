@@ -8,10 +8,8 @@ class CreateH5pLibrariesHubCacheTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('hh5p_libraries_hub_cache', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -42,11 +40,9 @@ class CreateH5pLibrariesHubCacheTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::drop('hh5p_libraries_hub_cache');
+        Schema::dropIfExists('hh5p_libraries_hub_cache');
     }
 }

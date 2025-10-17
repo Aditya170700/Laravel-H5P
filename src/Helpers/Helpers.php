@@ -1,6 +1,6 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Helpers;
+namespace Adityaricki\LaravelH5P\Helpers;
 
 class Helpers
 {
@@ -53,7 +53,7 @@ class Helpers
             unlink($dir);
             return;
         }
-        $files = array_diff(scandir($dir), array('.','..'));
+        $files = array_diff(scandir($dir), array('.', '..'));
         foreach ($files as $file) {
             $filepath = "$dir/$file";
             // Note that links may resolve as directories

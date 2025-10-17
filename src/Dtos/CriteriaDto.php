@@ -1,8 +1,8 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Dtos;
+namespace Adityaricki\LaravelH5P\Dtos;
 
-use Brnysn\LaravelH5P\Dtos\Contracts\DtoContract;
+use Adityaricki\LaravelH5P\Dtos\Contracts\DtoContract;
 use Illuminate\Support\Collection;
 
 class CriteriaDto implements DtoContract

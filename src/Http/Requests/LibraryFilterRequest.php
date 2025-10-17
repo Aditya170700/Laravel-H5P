@@ -1,8 +1,8 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Http\Requests;
+namespace Adityaricki\LaravelH5P\Http\Requests;
 
-use Brnysn\LaravelH5P\Exceptions\H5PException;
+use Adityaricki\LaravelH5P\Exceptions\H5PException;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LibraryFilterRequest extends FormRequest

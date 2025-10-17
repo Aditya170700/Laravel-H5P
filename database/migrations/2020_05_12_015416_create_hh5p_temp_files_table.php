@@ -8,10 +8,8 @@ class CreateHH5pTempFilesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('hh5p_temp_files', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -23,11 +21,9 @@ class CreateHH5pTempFilesTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::drop('hh5p_temp_files');
+        Schema::dropIfExists('hh5p_temp_files');
     }
 }

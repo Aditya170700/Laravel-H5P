@@ -1,13 +1,13 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Repositories;
+namespace Adityaricki\LaravelH5P\Repositories;
 
 use H5peditorStorage;
-use Brnysn\LaravelH5P\Models\H5PLibrary;
-use Brnysn\LaravelH5P\Models\H5PLibraryLanguage;
-use Brnysn\LaravelH5P\Models\H5PContent;
-use Brnysn\LaravelH5P\Models\H5PTempFile;
-use Brnysn\LaravelH5P\Helpers\Helpers;
+use Adityaricki\LaravelH5P\Models\H5PLibrary;
+use Adityaricki\LaravelH5P\Models\H5PLibraryLanguage;
+use Adityaricki\LaravelH5P\Models\H5PContent;
+use Adityaricki\LaravelH5P\Models\H5PTempFile;
+use Adityaricki\LaravelH5P\Helpers\Helpers;
 
 /**
  * A defined interface for the editor to communicate with the database of the
@@ -80,9 +80,7 @@ class H5PEditorStorageRepository implements H5peditorStorage
      *
      * @param int $fileId
      */
-    public function keepFile($fileId)
-    {
-    }
+    public function keepFile($fileId) {}
 
     /**
      * Decides which content types the editor should have.
@@ -101,7 +99,7 @@ class H5PEditorStorageRepository implements H5peditorStorage
     {
         if (isset($libraries)) {
             $data = collect($libraries)
-                ->map(fn ($library) => H5PLibrary::where([
+                ->map(fn($library) => H5PLibrary::where([
                     ['name', $library->name],
                     ['major_version', $library->majorVersion],
                     ['minor_version', $library->minorVersion]
@@ -131,9 +129,7 @@ class H5PEditorStorageRepository implements H5peditorStorage
      *  List of libraries indexed by machineName with objects as values. The objects
      *  have majorVersion and minorVersion as properties.
      */
-    public function alterLibraryFiles(&$files, $libraries)
-    {
-    }
+    public function alterLibraryFiles(&$files, $libraries) {}
 
     /**
      * Saves a file or moves it temporarily. This is often necessary in order to
@@ -145,9 +141,7 @@ class H5PEditorStorageRepository implements H5peditorStorage
      * @return bool|object Returns false if saving failed or the path to the file
      *  if saving succeeded
      */
-    public static function saveFileTemporarily($data, $move_file)
-    {
-    }
+    public static function saveFileTemporarily($data, $move_file) {}
 
     /**
      * Marks a file for later cleanup, useful when files are not instantly cleaned
@@ -175,8 +169,7 @@ class H5PEditorStorageRepository implements H5peditorStorage
     {
         if (is_dir($filePath)) {
             Helpers::deleteFileTree($filePath);
-        }
-        else {
+        } else {
             unlink($filePath);
         }
     }

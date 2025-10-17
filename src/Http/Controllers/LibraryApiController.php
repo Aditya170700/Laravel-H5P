@@ -1,18 +1,18 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Http\Controllers;
+namespace Adityaricki\LaravelH5P\Http\Controllers;
 
-use Brnysn\LaravelH5P\Http\Requests\LibraryDeleteRequest;
-use Brnysn\LaravelH5P\Http\Requests\LibraryInstallRequest;
-use Brnysn\LaravelH5P\Http\Requests\LibraryListRequest;
-use Brnysn\LaravelH5P\Http\Requests\LibraryUploadRequest;
-use Brnysn\LaravelH5P\Http\Requests\LibraryFilterRequest;
-use Brnysn\LaravelH5P\Http\Resources\LibraryResource;
+use Adityaricki\LaravelH5P\Http\Requests\LibraryDeleteRequest;
+use Adityaricki\LaravelH5P\Http\Requests\LibraryInstallRequest;
+use Adityaricki\LaravelH5P\Http\Requests\LibraryListRequest;
+use Adityaricki\LaravelH5P\Http\Requests\LibraryUploadRequest;
+use Adityaricki\LaravelH5P\Http\Requests\LibraryFilterRequest;
+use Adityaricki\LaravelH5P\Http\Resources\LibraryResource;
 use Illuminate\Http\JsonResponse;
-use Brnysn\LaravelH5P\Http\Controllers\Swagger\LibraryApiSwagger;
-use Brnysn\LaravelH5P\Services\Contracts\HeadlessH5PServiceContract;
+use Adityaricki\LaravelH5P\Http\Controllers\Swagger\LibraryApiSwagger;
+use Adityaricki\LaravelH5P\Services\Contracts\HeadlessH5PServiceContract;
 
-use Brnysn\LaravelH5P\Http\Requests\LibraryStoreRequest;
+use Adityaricki\LaravelH5P\Http\Requests\LibraryStoreRequest;
 use Illuminate\Http\Request;
 
 class LibraryApiController extends BaseController implements LibraryApiSwagger

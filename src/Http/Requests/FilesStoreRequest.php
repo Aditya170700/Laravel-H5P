@@ -1,8 +1,8 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Http\Requests;
+namespace Adityaricki\LaravelH5P\Http\Requests;
 
-use Brnysn\LaravelH5P\Models\H5PLibrary;
+use Adityaricki\LaravelH5P\Models\H5PLibrary;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
@@ -15,7 +15,7 @@ class FilesStoreRequest extends FormRequest
      */
     public function authorize()
     {
-//        return Gate::allows('upload', H5PLibrary::class);
+        //        return Gate::allows('upload', H5PLibrary::class);
 
         return true;
     }

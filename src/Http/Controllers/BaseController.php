@@ -1,6 +1,6 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Http\Controllers;
+namespace Adityaricki\LaravelH5P\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -21,8 +21,8 @@ abstract class BaseController extends Controller
     public function sendResponse($data, string $message = '', int $code = 200): JsonResponse
     {
         $body = [
-          'success' => $code >= 200 && $code < 300,
-          'message' => $message,
+            'success' => $code >= 200 && $code < 300,
+            'message' => $message,
         ];
         if (!is_null($data)) {
             $body['data'] = $data;
@@ -69,10 +69,10 @@ abstract class BaseController extends Controller
     public function sendResponseWithMeta(array $data, array $meta, string $message = '', int $code = 200): JsonResponse
     {
         return Response::json([
-          'success' => $code >= 200 && $code < 300,
-          'data'    => $data,
-          'meta'    => $meta,
-          'message' => $message,
+            'success' => $code >= 200 && $code < 300,
+            'data'    => $data,
+            'meta'    => $meta,
+            'message' => $message,
         ], $code);
     }
 }

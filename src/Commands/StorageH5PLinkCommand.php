@@ -1,6 +1,6 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Commands;
+namespace Adityaricki\LaravelH5P\Commands;
 
 use Illuminate\Console\Command;
 
@@ -60,11 +60,11 @@ class StorageH5PLinkCommand extends Command
      */
     protected function links()
     {
-        return[
+        return [
             public_path('h5p') => storage_path('app/h5p'),
             public_path('storage/h5p') => storage_path('app/h5p'),
-            public_path('h5p-core') => base_path().'/vendor/h5p/h5p-core',
-            public_path('h5p-editor') => base_path().'/vendor/h5p/h5p-editor',
+            public_path('h5p-core') => base_path() . '/vendor/h5p/h5p-core',
+            public_path('h5p-editor') => base_path() . '/vendor/h5p/h5p-editor',
         ];
     }
 }

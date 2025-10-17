@@ -1,9 +1,9 @@
 <?php
 
-namespace Brnysn\LaravelH5P\Http\Requests;
+namespace Adityaricki\LaravelH5P\Http\Requests;
 
-use Brnysn\LaravelH5P\Models\H5PContent;
-use Brnysn\LaravelH5P\Repositories\Contracts\H5PContentRepositoryContract;
+use Adityaricki\LaravelH5P\Models\H5PContent;
+use Adityaricki\LaravelH5P\Repositories\Contracts\H5PContentRepositoryContract;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
@@ -11,7 +11,7 @@ class ContentCreateRequest extends FormRequest
 {
     public function authorize(): bool
     {
-//        return Gate::allows('create', H5PContent::class);
+        //        return Gate::allows('create', H5PContent::class);
 
         return true;
     }
